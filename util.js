@@ -17,10 +17,18 @@ const persons = ["one", "two", "three"];
 function getPersons() {
   return persons;
 }
+
+function downloadCV(path) {
+  if (!path) {
+    throw new Error("invalid URL");
+  }
+  return "Content";
+}
 module.exports = {
   greet,
   isEven,
   isOdd,
   getCustomer,
-  getPersons
+  getPersons,
+  downloadCV
 };

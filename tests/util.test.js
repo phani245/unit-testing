@@ -1,4 +1,11 @@
-const { greet, isEven, isOdd, getCustomer, getPersons } = require("../util");
+const {
+  greet,
+  isEven,
+  isOdd,
+  getCustomer,
+  getPersons,
+  downloadCV
+} = require("../util");
 describe("Greet Feature", () => {
   it("should be the greet message", () => {
     const results = greet("Jane");
@@ -50,5 +57,23 @@ describe("Persons", () => {
     const results = getPersons();
     expect(results).toHaveLength(3);
     expect(results).toContain("two");
+  });
+});
+
+describe("Download CV", () => {
+  it("should throw error if the user does not provide the path", () => {
+    expect(() => {
+      downloadCV();
+    }).toThrow();
+    expect(() => {
+      downloadCV();
+    }).toThrow("invalid URL");
+    expect(() => {
+      downloadCV(null);
+    }).toThrow();
+  });
+  it("should get the contents from the CV", () => {
+    const results = downloadCV("https://localhost:3000");
+    expect(results).toBe("Content");
   });
 });
